@@ -1,0 +1,29 @@
+package oop_les6_hw;
+
+import java.math.BigInteger;
+
+public class FactorialThread implements Runnable{
+	private int cur_thread; 
+	
+	public FactorialThread(int cur_thread) {
+		super();
+		this.cur_thread = cur_thread;
+	}
+
+	public BigInteger calcFactorial(){
+		BigInteger fact = BigInteger.valueOf(1);
+		for (int i = 1; i <= cur_thread; i++) {
+			fact = fact.multiply(BigInteger.valueOf(i));
+		}
+		return fact;
+	}
+
+
+	@Override
+	public void run() {
+		System.out.println("factorial for "+cur_thread+" = "+ calcFactorial());
+		
+	}
+	
+
+}
